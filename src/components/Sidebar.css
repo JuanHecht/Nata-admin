@@ -1,0 +1,8 @@
+.sidebar{
+    position: fixed;
+    left: 0;
+    /* set to height of the navbar */
+    top: 100px;
+    background-color: blue;
+    height: 100vh;
+}
