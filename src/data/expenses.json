@@ -7,6 +7,7 @@
     "description": "2 burgers",
     "itemCategory": "food",
     "category": "expense",
+    "budgetId": "food",
     "subscription": false
   },
   {
@@ -17,6 +18,7 @@
     "description": "webpage",
     "itemCategory": "tech",
     "category": "income",
+    "budgetId": "",
     "subscription": false
   },
   {
@@ -27,6 +29,7 @@
     "description": "none",
     "itemCategory": "housing",
     "category": "expense",
+    "budgetId": "housing",
     "subscription": true
   },
   {
@@ -37,6 +40,7 @@
     "description": "gym membership",
     "itemCategory": "health",
     "category": "expense",
+    "budgetId": "services",
     "subscription": true
   }
 ]

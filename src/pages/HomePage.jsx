@@ -1,8 +1,9 @@
 import expenses from "../data/expenses.json";
 import { useState } from "react";
-import ExpenseCard from "./ExpenseCard";
+import ExpenseCard from "./../components/ExpenseCard";
+import { Link } from "react-router-dom";
 
-function ListExpenses() {
+function HomePage() {
   const [expense, setExpense] = useState([...expenses]);
 
   function removeItem(index) {
@@ -12,12 +13,14 @@ function ListExpenses() {
 
 
   return (
-    <div>
+    <div className="entriesDisplay">
       {expense.map((entry)=>(
-        <ExpenseCard key={entry.id} entry={entry} removeItem={removeItem} />
+        <Link to={`entry/${entry.id}`} key={entry.id}>
+            <ExpenseCard key={entry.id} entry={entry} removeItem={removeItem} />
+        </Link>
       ))}
     </div>
   );
 }
 
-export default ListExpenses;
+export default HomePage;

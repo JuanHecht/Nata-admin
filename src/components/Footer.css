@@ -3,10 +3,10 @@
     width: 100vw;
     height: 60px;
     flex-direction: row;
-    position: fixed;
-    top: 92vh;
+    position: absolute;
     left: 0;
     color: white;
     align-items: center;
     background-color: orange;
+    margin-top: 50px;
 }

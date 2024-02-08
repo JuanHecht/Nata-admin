@@ -1,3 +1,5 @@
+import './ExpenseCard.css'
+
 function ExpenseCard(props) {
     const {entry, removeItem} = props;
     /*  create function assignImage() 
@@ -5,11 +7,10 @@ function ExpenseCard(props) {
     2. Create a databank of images and assign them with the function*/
 
         return (
-          <div
+          <div className="card"
             key={entry.id}
-            style={{ display: "flex", flexDirection: "row", border: "1px solid black" }}
           >
-            <img src={entry.image} height={150} width={250} />
+            <img className="cardImg" src={entry.image} />
             <div>
                 <h3>{entry.title}</h3>
                 <h3>{entry.value}</h3>

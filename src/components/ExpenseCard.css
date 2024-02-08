@@ -1,0 +1,11 @@
+.card{
+    margin: 30px;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+}
+.cardImg{
+    height: 150px;
+    width: 250px;
+}
