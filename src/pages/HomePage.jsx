@@ -13,7 +13,7 @@ function HomePage() {
   }
 
   function addNewEntry(newEntry) {
-    const updatedEntries = [...expense, newEntry]
+    const updatedEntries = [newEntry,...expense]
     setExpense(updatedEntries)
   }
 
