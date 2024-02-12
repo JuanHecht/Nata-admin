@@ -1,4 +1,6 @@
 import './ExpenseCard.css'
+import {Link} from  'react-router-dom';
+
 
 function ExpenseCard(props) {
     const {entry, removeItem} = props;
@@ -12,10 +14,15 @@ function ExpenseCard(props) {
           >
             <img className="cardImg" src={entry.image} />
             <div>
-                <h3>{entry.title}</h3>
-                <h3>{entry.value}</h3>
-                <h3>{entry.date}</h3>
-                <h3>{entry.description}</h3>
+              <Link to={`entry/${entry.id}`} key={entry.id}>
+                <div>
+                  <h3>{entry.title}</h3>
+                  <h3>{entry.value}</h3>
+                  <h3>{entry.date}</h3>
+                  <h3>{entry.description}</h3>
+                </div>
+              </Link>
+              <button>Edit entry</button>
                 <button onClick={() => removeItem(entry.id)}>Delete Entry</button>
             </div>
           </div>

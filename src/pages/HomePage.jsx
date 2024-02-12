@@ -1,8 +1,7 @@
 import expenses from "../data/expenses.json";
 import { useState } from "react";
 import ExpenseCard from "./../components/ExpenseCard";
-import { Link } from "react-router-dom";
-import NewEntry from "./NewEntry";
+import NewEntry from "../components/NewEntry";
 
 function HomePage() {
   const [expense, setExpense] = useState(expenses);
@@ -16,16 +15,28 @@ function HomePage() {
     const updatedEntries = [newEntry,...expense]
     setExpense(updatedEntries)
   }
+  /* let lastIndex = expenses.length-1;
+  console.log(expenses[lastIndex].id) */
+  /* console.log(expenses.length) */
+  function addNewId() {
+    if (expense.length === 0) {
+        return 1; 
+    } else {
+        let lastIndex = expense.length - 1
+        const lastExpense = expense[lastIndex]
+        return lastExpense.id + 1;
+    }
+}
+
 
   return (
     <section>
       <div className="entriesDisplay">
-        <NewEntry addNewEntry={addNewEntry}/>
+        <NewEntry addNewEntry={addNewEntry} addNewId={addNewId}/>
 
         {expense.map((entry)=>(
-          <Link to={`entry/${entry.id}`} key={entry.id}>
+          
               <ExpenseCard key={entry.id} entry={entry} removeItem={removeItem} />
-          </Link>
         ))}
       </div>
     </section>

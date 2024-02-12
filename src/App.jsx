@@ -7,7 +7,6 @@ import {Routes, Route} from 'react-router-dom';
 import Error from  './pages/Error';
 import ExpenseDetails from './pages/ExpenseDetails'
 import About from './pages/About';
-import NewEntry from './pages/NewEntry'
 
 import expenseData from './data/expenses.json'
 
