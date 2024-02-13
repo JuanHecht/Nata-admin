@@ -15,9 +15,7 @@ function HomePage() {
     const updatedEntries = [newEntry,...expense]
     setExpense(updatedEntries)
   }
-  /* let lastIndex = expenses.length-1;
-  console.log(expenses[lastIndex].id) */
-  /* console.log(expenses.length) */
+
   function addNewId() {
     if (expense.length === 0) {
         return 1; 
@@ -28,15 +26,13 @@ function HomePage() {
     }
 }
 
-
   return (
     <section>
       <div className="entriesDisplay">
         <NewEntry addNewEntry={addNewEntry} addNewId={addNewId}/>
 
         {expense.map((entry)=>(
-          
-              <ExpenseCard key={entry.id} entry={entry} removeItem={removeItem} />
+          <ExpenseCard key={entry.id} entry={entry} removeItem={removeItem} />
         ))}
       </div>
     </section>

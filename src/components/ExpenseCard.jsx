@@ -23,7 +23,7 @@ function ExpenseCard(props) {
                 </div>
               </Link>
               <button>Edit entry</button>
-                <button onClick={() => removeItem(entry.id)}>Delete Entry</button>
+              <button onClick={() => removeItem(entry.id)}>Delete Entry</button>
             </div>
           </div>
         );
