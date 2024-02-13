@@ -1,9 +1,11 @@
 import expenseData from './../data/expenses.json'
 import { useParams } from "react-router-dom";
 
+
 function ExpenseDetails(){
     const {entryId} = useParams()
     const entryData = expenseData.find((entry) => entry.id == entryId);
+
 
     /* Need to import the updated expenses json file (the temporary one created with params) */
   

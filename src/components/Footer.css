@@ -3,7 +3,8 @@
     width: 100vw;
     height: 60px;
     flex-direction: row;
-    position: absolute;
+    position: fixed;
+    top: calc(100vh - 100px);
     left: 0;
     color: white;
     align-items: center;
