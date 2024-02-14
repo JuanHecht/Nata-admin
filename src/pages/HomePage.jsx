@@ -2,6 +2,7 @@ import expenses from "../data/expenses.json";
 import { useState } from "react";
 import ExpenseCard from "./../components/ExpenseCard";
 import NewEntry from "../components/NewEntry";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const [expense, setExpense] = useState(expenses);
@@ -30,7 +31,9 @@ function HomePage() {
     <section>
       <div className="entriesDisplay">
         <NewEntry addNewEntry={addNewEntry} addNewId={addNewId}/>
-
+        <Link to={"/add-new-entry"}>
+          <button>Add New Entry</button>
+        </Link>
         {expense.map((entry)=>(
           <ExpenseCard key={entry.id} entry={entry} removeItem={removeItem} />
         ))}
