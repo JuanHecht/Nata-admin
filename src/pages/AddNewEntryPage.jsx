@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+const API_URL = "http://localhost:3000/entries";
+
 function AddNewEntryPage() {
 
     const [entryType, setEntryType] = useState("");
@@ -11,29 +13,17 @@ function AddNewEntryPage() {
     const [date, setDate] = useState("");
     const [description, setDescription] = useState("");
     const [subscription, setSubscription] = useState("");
-    const [id, setId] = useState("");
 
     const navigate = useNavigate();
 
     function handleSubmit(e){
         e.preventDefault();
-        const newEntry = {entryType, title, value, date, description, subscription, id};
+        const newEntry = {entryType, title, value, date, description, subscription};
 
         axios
-        .post("/", newEntry)
+        .post(`${API_URL}`, newEntry)
         .then(()=>{ navigate("/")})
         .catch((error)=>{console.log(error)})
-
-
-        // Set the reset after submitting
-
-        setEntryType("");
-        setTitle("");
-        setValue("")
-        setDate("")
-        setDescription("")
-        setSubscription("")
-        setId("")
     }
 
 
@@ -48,9 +38,10 @@ function AddNewEntryPage() {
                         <input 
                             type="radio" 
                             name="expense"
-                            value={entryType}
+                            value="expense"
+                            checked={entryType === true}
                             required
-                            onChange={(e)=>{setEntryType(e.target.checked)}}
+                            onChange={()=>{setEntryType(true)}}
                             
                         />
                         <label>Expense</label>
@@ -59,9 +50,10 @@ function AddNewEntryPage() {
                         <input 
                             type="radio" 
                             name="expense"
-                            value={entryType}
+                            value="income"
+                            checked={entryType === false}
                             required
-                            onChange={(e)=>{setEntryType(e.target.checked)}}
+                            onChange={()=>{setEntryType(false)}}
                         />
                         <label>Income</label>
                     </div>
@@ -94,6 +86,7 @@ function AddNewEntryPage() {
                     name="date"
                     value={date}
                     required
+                    max= "9999-12-31"
                     onChange={(e)=>{setDate(e.target.value)}}
                 />
 
@@ -105,8 +98,19 @@ function AddNewEntryPage() {
                     onChange={(e)=>{setDescription(e.target.value)}}
                 />
 
-                {/* New category */}
-
+                {/* New category itemCategory*/}
+                
+                <select name="iron-city">
+                    <option value="mad">Madrid</option>
+                    <option value="bcn">Barcelona</option>
+                    <option value="mia">Miami</option>
+                    <option value="mex">Mexico City</option>
+                    <option value="par">Paris</option>
+                    <option value="ber">Berlin</option>
+                    <option value="ams">Amsterdam</option>
+                    <option value="sao">Sao Paulo</option>
+                    <option value="lis">Lisbon</option>
+                </select>
 
                 {/* New subscription */}
                 <label>Subscription</label>
@@ -116,8 +120,9 @@ function AddNewEntryPage() {
                     <input
                         type="radio"
                         name="subscription"
-                        value={subscription}
-                        onChange={(e)=>{setSubscription(e.target.value)}}
+                        value="true"
+                        checked={subscription === true}
+                        onChange={()=>{setSubscription(true)}}
                     />
                     </div>
                     <div>
@@ -125,17 +130,18 @@ function AddNewEntryPage() {
                     <input
                         type="radio"
                         name="subscription"
-                        value={subscription}
-                        onChange={(e)=>{setSubscription(e.target.value)}}
+                        value="false"
+                        checked={subscription === false}
+                        onChange={()=>{setSubscription(false)}}
                     />
                     </div>
                 </div>
 
-                <button type="submit" /* onClick={()=>setId(addNewId())} */>Add Entry</button>
+                <button type="submit">Add Entry</button>
 
             </form>
     </div>
   )
 }
 
-export default AddNewEntryPage
+export default AddNewEntryPage;

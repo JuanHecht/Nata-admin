@@ -1,0 +1,57 @@
+[
+    {
+        "name": "food",
+        "image": "",
+        "id": 1
+    },
+    {
+        "name": "health",
+        "image": "",
+        "id": 2
+    },
+    {
+        "name": "Shopping",
+        "image": "",
+        "id": 3
+    },
+    {
+        "name": "Sports",
+        "image": "",
+        "id": 4
+    },
+    {
+        "name": "Services",
+        "image": "",
+        "id": 5
+    },
+    {
+        "name": "Groceries",
+        "image": "",
+        "id": 6
+    },
+    {
+        "name": "Activities",
+        "image": "",
+        "id": 7
+    },
+    {
+        "name": "Party",
+        "image": "",
+        "id": 8
+    },
+    {
+        "name": "Housing",
+        "image": "",
+        "id": 9
+    },
+    {
+        "name": "Gig",
+        "image": "",
+        "id": 10
+    },
+    {
+        "name": "Salary",
+        "image": "",
+        "id": 11
+    }
+]

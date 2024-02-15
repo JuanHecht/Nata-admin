@@ -1,41 +1,41 @@
-import expenses from "../data/expenses.json";
-import { useState } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import ExpenseCard from "./../components/ExpenseCard";
-import NewEntry from "../components/NewEntry";
 import { Link } from "react-router-dom";
 
+const API_URL = "http://localhost:3000/entries"; 
+
 function HomePage() {
-  const [expense, setExpense] = useState(expenses);
+  const [expenses, setExpenses] = useState([]);
 
-  function removeItem(index) {
-    const updatedExpense = expense.filter((entry) => entry.id !== index);
-    setExpense(updatedExpense);
-  }
+  useEffect(() => {
+    axios.get(API_URL)
+      .then(response => {
+        setExpenses(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching expenses:', error);
+      });
+  }, []); 
 
-  function addNewEntry(newEntry) {
-    const updatedEntries = [newEntry,...expense]
-    setExpense(updatedEntries)
-  }
-
-  function addNewId() {
-    if (expense.length === 0) {
-        return 1; 
-    } else {
-        let lastIndex = expense.length - 1
-        const lastExpense = expense[lastIndex]
-        return lastExpense.id + 1;
-    }
-}
+  function removeItem(id) {
+    axios.delete(`${API_URL}/${id}`)
+      .then(() => {
+        setExpenses(prevExpenses => prevExpenses.filter(expense => expense.id !== id));
+      })
+      .catch(error => {
+        console.error('Error deleting expense:', error);
+      });
+  } 
 
   return (
     <section>
       <div className="entriesDisplay">
-        <NewEntry addNewEntry={addNewEntry} addNewId={addNewId}/>
         <Link to={"/add-new-entry"}>
           <button>Add New Entry</button>
         </Link>
-        {expense.map((entry)=>(
-          <ExpenseCard key={entry.id} entry={entry} removeItem={removeItem} />
+        {expenses.map(entry => (
+          <ExpenseCard key={entry.id} entry={entry}  removeItem={removeItem} />
         ))}
       </div>
     </section>

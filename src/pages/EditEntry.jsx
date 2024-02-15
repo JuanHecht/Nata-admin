@@ -1,38 +1,51 @@
-import { useState } from "react";
+import axios from "axios"
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-function NewEntry(props){
+const API_URL = "http://localhost:3000/entries";
 
+function EditEntry(){
+    /* const [entry, setEntry] = useState(""); */
     const [entryType, setEntryType] = useState("");
     const [title, setTitle] = useState("");
     const [value, setValue] = useState("");
     const [date, setDate] = useState("");
     const [description, setDescription] = useState("");
     const [subscription, setSubscription] = useState("");
-    const [id, setId] = useState("");
+    const navigate = useNavigate()
+    
+    const {entryId} = useParams()
 
+    useEffect(()=>{
+        axios
+        .get(`${API_URL}/${entryId}`)
+        .then((response)=>{
+            const oneEntry = response.data
+            setEntryType(oneEntry.entryType)
+            setTitle(oneEntry.title)
+            setValue(oneEntry.value)
+            setDate(oneEntry.date)
+            setDescription(oneEntry.description)
+            setSubscription(oneEntry.subscription)
+        })
+        .catch((error)=>{console.log(error)})
+    }, []);
 
-    function handleSubmit(e){
+    const  handleSubmit = (e) => {
         e.preventDefault();
-        /* setId(props.addNewId()); */
-        const newEntry = {entryType, title, value, date, description, subscription, id};
-        props.addNewEntry(newEntry);
-        console.log(newEntry)
 
-        // Set the reset after submitting
-
-        setEntryType("");
-        setTitle("");
-        setValue("")
-        setDate("")
-        setDescription("")
-        setSubscription("")
-        setId("")
+        const newEntry = {entryType, title, value, date, description, subscription};
+        
+        axios
+        .put(`${API_URL}/${entryId}`, newEntry)
+        .then(()=>navigate(`/entry/${entryId}`))
+        .catch((error)=>{console.log(error)})
+        
     }
 
     return(
-        <section>
-            <h1>Add a new entry</h1>
-
+        <div>
+            <h1>Edit Entry</h1>
             <form onSubmit={handleSubmit} className="form">
                 {/* New Entry */}
                 <div className="entryType">
@@ -40,9 +53,10 @@ function NewEntry(props){
                         <input 
                             type="radio" 
                             name="expense"
-                            value={entryType}
+                            value="expense"
+                            checked={entryType === true}
                             required
-                            onChange={(e)=>{setEntryType(e.target.checked)}}
+                            onChange={()=>{setEntryType(true)}}
                             
                         />
                         <label>Expense</label>
@@ -51,9 +65,10 @@ function NewEntry(props){
                         <input 
                             type="radio" 
                             name="expense"
-                            value={entryType}
+                            value="income"
+                            checked={entryType === false}
                             required
-                            onChange={(e)=>{setEntryType(e.target.checked)}}
+                            onChange={()=>{setEntryType(false)}}
                         />
                         <label>Income</label>
                     </div>
@@ -86,6 +101,7 @@ function NewEntry(props){
                     name="date"
                     value={date}
                     required
+                    max= "9999-12-31"
                     onChange={(e)=>{setDate(e.target.value)}}
                 />
 
@@ -97,7 +113,7 @@ function NewEntry(props){
                     onChange={(e)=>{setDescription(e.target.value)}}
                 />
 
-                {/* New category */}
+                {/* New category itemCategory*/}
 
 
                 {/* New subscription */}
@@ -108,8 +124,9 @@ function NewEntry(props){
                     <input
                         type="radio"
                         name="subscription"
-                        value={subscription}
-                        onChange={(e)=>{setSubscription(e.target.value)}}
+                        value="true"
+                        checked={subscription === true}
+                        onChange={()=>{setSubscription(true)}}
                     />
                     </div>
                     <div>
@@ -117,17 +134,18 @@ function NewEntry(props){
                     <input
                         type="radio"
                         name="subscription"
-                        value={subscription}
-                        onChange={(e)=>{setSubscription(e.target.value)}}
+                        value="false"
+                        checked={subscription === false}
+                        onChange={()=>{setSubscription(false)}}
                     />
                     </div>
                 </div>
 
-                <button type="submit" onClick={()=>setId(props.addNewId())}>Add Entry</button>
+                <button type="submit">Edit</button>
 
             </form>
-        </section>
+        </div>
     )
 }
 
-export default NewEntry
+export default EditEntry
