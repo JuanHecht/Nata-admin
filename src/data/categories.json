@@ -1,11 +1,11 @@
 [
     {
-        "name": "food",
+        "name": "Food",
         "image": "",
         "id": 1
     },
     {
-        "name": "health",
+        "name": "Health",
         "image": "",
         "id": 2
     },
