@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import categories from "../data/categories.json"
 
 const API_URL = "http://localhost:3000/entries";
 
@@ -12,6 +13,7 @@ function EditEntry(){
     const [date, setDate] = useState("");
     const [description, setDescription] = useState("");
     const [subscription, setSubscription] = useState("");
+    const [category, setCategory] = useState("")
     const navigate = useNavigate()
     
     const {entryId} = useParams()
@@ -27,14 +29,15 @@ function EditEntry(){
             setDate(oneEntry.date)
             setDescription(oneEntry.description)
             setSubscription(oneEntry.subscription)
+            setCategory(oneEntry.category)
         })
         .catch((error)=>{console.log(error)})
     }, []);
 
     const  handleSubmit = (e) => {
         e.preventDefault();
-
-        const newEntry = {entryType, title, value, date, description, subscription};
+        const newValue = entryType ? -value : +value;
+        const newEntry = {entryType, title, value: newValue, date, description, subscription, category};
         
         axios
         .put(`${API_URL}/${entryId}`, newEntry)
@@ -114,6 +117,15 @@ function EditEntry(){
                 />
 
                 {/* New category itemCategory*/}
+                <label>Category</label>
+                <select name="category"
+                    onChange={(e)=>{setCategory(e.target.value)}}>
+                    {categories.map(category =>{
+                        return (
+                        <option value={category.name} key={category.id}>{category.name}</option>
+                        )
+                    })}
+                </select>
 
 
                 {/* New subscription */}

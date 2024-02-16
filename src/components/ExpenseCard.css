@@ -2,10 +2,30 @@
     margin: 30px;
     padding: 15px;
     display: flex;
-    flex-direction: row;
-    border: 1px solid black;
+    border: 5px solid #BC6C25;
+    background-color: #DDA15E;
+    border-radius: 15px;
+    height: fit-content;
 }
 .cardImg{
-    height: 150px;
-    width: 250px;
+    height: 100px;
+    width: 100px;
+    margin-top: 30%;
+    margin-left: 20px;
+}
+
+.cardInfo h3{
+    margin-left: 40px;
+    border-bottom: none;
+    color: #283618;
+    width: 200px;
+}
+a {
+    font-weight: 500;
+    text-decoration: inherit;
+}
+
+.line{
+    display: flex;
+    flex-direction: row;
 }

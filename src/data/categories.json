@@ -1,57 +1,62 @@
 [
     {
-        "name": "Food",
+        "name": "No category selected",
         "image": "",
         "id": 1
     },
     {
-        "name": "Health",
-        "image": "",
+        "name": "Food",
+        "image": "/src/assets/images/diet.png",
         "id": 2
     },
     {
-        "name": "Shopping",
-        "image": "",
+        "name": "Health",
+        "image": "/src/assets/images/healthcare.png",
         "id": 3
     },
     {
-        "name": "Sports",
-        "image": "",
+        "name": "Shopping",
+        "image": "/src/assets/images/online-shopping.png",
         "id": 4
     },
     {
-        "name": "Services",
-        "image": "",
+        "name": "Sports",
+        "image": "/src/assets/images/sports.png",
         "id": 5
     },
     {
-        "name": "Groceries",
-        "image": "",
+        "name": "Services",
+        "image": "/src/assets/images/business.png",
         "id": 6
     },
     {
-        "name": "Activities",
-        "image": "",
+        "name": "Groceries",
+        "image": "/src/assets/images/grocery.png",
         "id": 7
     },
     {
-        "name": "Party",
-        "image": "",
+        "name": "Activities",
+        "image": "/src/assets/images/hiking.png",
         "id": 8
     },
     {
-        "name": "Housing",
-        "image": "",
+        "name": "Party",
+        "image": "/src/assets/images/dance.png",
         "id": 9
     },
     {
-        "name": "Gig",
-        "image": "",
+        "name": "Housing",
+        "image": "/src/assets/images/house.png",
         "id": 10
     },
     {
-        "name": "Salary",
-        "image": "",
+        "name": "Gig",
+        "image": "/src/assets/images/online-business.png",
         "id": 11
+    },
+    {
+        "name": "Salary",
+        "image": "src/assets/images/salary.png",
+        "id": 12
     }
 ]

@@ -1,24 +1,35 @@
 import './ExpenseCard.css'
 import {Link} from  'react-router-dom';
+import categories from '../data/categories.json'
 
 
 function ExpenseCard(props) {
-    const {entry, removeItem} = props;
-
-    /*  create function assignImage() 
-    1. a function that holds a switch and assigns an image based on the itemCategory
-    2. Create a databank of images and assign them with the function*/
+    const {entry} = props;
+    
+    const assignImage = (category) => {
+      // Find the category in the categories JSON data
+      const foundCategory = categories.find(item => item.name === category);
+      // If category is found, return its corresponding image
+      if (foundCategory) {
+          return foundCategory.image;
+      } else {
+          // If category is not found, return a default image or handle accordingly
+          return 'default-image-url.jpg'; // Replace 'default-image-url.jpg' with your default image URL
+      }
+    };
 
         return (
           <div className="card" key={entry.id}>
-            <img className="cardImg" src={entry.image} />
-            <div>
+            <div  className="imgContainer">
+              <img className="cardImg" src={assignImage(entry.category)} alt={entry.category} />
+            </div>
+            <div className='cardInfo'>
               <Link to={`entry/${entry.id}`} key={entry.id}>
                 <div>
-                  <h3>{entry.title}</h3>
-                  <h3>{entry.value}</h3>
-                  <h3>{entry.date}</h3>
-                  <h3>{entry.description}</h3>
+                  <h3>Title: <h4 className='entryInfo'>{entry.title}</h4></h3>
+                  <h3>Amount: <h4 className='entryInfo' style={{color: entry.value < 0 ? 'rgb(174, 0, 0)' : 'rgb(6, 90, 6)'}}>{entry.value} €</h4></h3>
+                  <h3>Date: <h4 className='entryInfo'>{entry.date}</h4></h3>
+                  <h3>Description: <h4 className='entryInfo'>{entry.description}</h4></h3>
                 </div>
               </Link>
             </div>

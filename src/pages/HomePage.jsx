@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import ExpenseCard from "./../components/ExpenseCard";
 import { Link } from "react-router-dom";
+import Balance from "../components/Balance";
 
 const API_URL = "http://localhost:3000/entries"; 
 
@@ -26,10 +27,10 @@ function HomePage() {
       .catch(error => {
         console.error('Error deleting expense:', error);
       });
-  } 
+  }
 
   return (
-    <section>
+    <section className="main">
       <div className="entriesDisplay">
         <Link to={"/add-new-entry"}>
           <button>Add New Entry</button>
@@ -38,6 +39,9 @@ function HomePage() {
           <ExpenseCard key={entry.id} entry={entry}  removeItem={removeItem} />
         ))}
       </div>
+      <section className="balance">
+        <Balance/>
+      </section>
     </section>
   );
 }

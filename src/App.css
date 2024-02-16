@@ -1,4 +1,4 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -17,4 +17,58 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+} */
+
+/* Colours for the Project
+
+#606C38 - light green
+#283618 - darker green
+#FEFAE0 - white/beige
+DDA15E - Tan skin
+#BC6C25 - Tanner skin
+#E8A87C
+#5E5E5E - un gris medio que puede usarse para resaltar o equilibrar otros colores en tu diseño.
+#E3DCC3 - un tono de crema que complementa el blanco/beige y suaviza la paleta en general.
+
+*/
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
 }
+.form{
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+}
+
+.main{
+  display: flex;
+}
+.entriesDisplay{
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  margin-left: 130px;
+  margin-top: 100px;
+  margin-bottom: 120px;
+}
+
+.balance{
+  margin-top: 100px;
+  margin-left: 60px;
+} 
+.balance h1{
+  font-size: 45px;
+}
+
+body{
+  background-color: #FEFAE0;
+}
+
+button {
+  background-color: #BC6C25;
+}
+
+

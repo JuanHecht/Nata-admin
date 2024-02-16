@@ -14,14 +14,16 @@ function AddNewEntryPage() {
     const [date, setDate] = useState("");
     const [description, setDescription] = useState("");
     const [subscription, setSubscription] = useState("");
-    const [category, setCategory] = useState("")
+    const [category, setCategory] = useState("");
 
     const navigate = useNavigate();
 
     function handleSubmit(e){
         e.preventDefault();
-        const newEntry = {entryType, title, value, date, description, subscription, category};
-
+        const newValue = entryType ? -value : +value;
+        
+        const newEntry = {entryType, title, value: newValue, date, description, subscription, category};
+    
         axios
         .post(`${API_URL}`, newEntry)
         .then(()=>{ navigate("/")})
@@ -78,6 +80,7 @@ function AddNewEntryPage() {
                     name="value"
                     value={value}
                     required
+                    min={0}
                     onChange={(e)=>{setValue(e.target.value)}}
                 />
 
