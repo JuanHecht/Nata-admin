@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import ExpenseCard from "./../components/ExpenseCard";
 import { Link } from "react-router-dom";
 import Balance from "../components/Balance";
+import Sidebar from '../components/Sidebar'
 
 const API_URL = "http://localhost:3000/entries"; 
 
@@ -32,13 +33,25 @@ function HomePage() {
   // Initial sort to display de entries by newest to oldest by date
   const sortedExpenses = [...expenses].sort((a, b) => new Date(b.date) - new Date(a.date));
 
+  function sortByValueUp(){
+    const sortedByValue = [...expenses].sort((a, b) => a.value - b.value);
+    setExpenses(sortedByValue)
+  }
+  function sortByValueDown(){
+    const sortedByValue = [...expenses].sort((a, b) => b.value - a.value);
+    setExpenses(sortedByValue)
+  }
+
   return (
     <section className="main">
+
+      <Sidebar sortByValueUp={sortByValueUp} sortByValueDown={sortByValueDown} expenses={expenses}/>
+
       <div className="entriesDisplay">
         <Link to={"/add-new-entry"}>
           <button>Add New Entry</button>
         </Link>
-        {sortedExpenses.map(entry => (
+        {expenses.map(entry => (
           <ExpenseCard key={entry.id} entry={entry}  removeItem={removeItem} />
         ))}
       </div>

@@ -53,7 +53,7 @@ function Balance() {
     <section>
 
         <section>
-            <h1>Current Balance: <h2 style={{color: allValues < 0 ? 'rgb(174, 0, 0)' : 'rgb(6, 90, 6)'}}>{allValues} €</h2></h1>
+            <h1>Current Balance: </h1><h2 style={{color: allValues < 0 ? 'rgb(174, 0, 0)' : 'rgb(6, 90, 6)'}}>{allValues} €</h2>
         </section>
 
        {/*  <section style={{height: "400px", width:"400px"}}>

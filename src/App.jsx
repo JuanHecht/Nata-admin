@@ -1,6 +1,5 @@
 import './App.css'
 import Navbar from './components/Navbar'
-import Sidebar from './components/Sidebar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
 import {Routes, Route} from 'react-router-dom';
@@ -14,7 +13,7 @@ function App() {
   
   return (
     <div>
-      <Sidebar/>
+      
       <Navbar/>
     
       <Routes >

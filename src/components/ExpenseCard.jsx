@@ -26,10 +26,10 @@ function ExpenseCard(props) {
             <div className='cardInfo'>
               <Link to={`entry/${entry.id}`} key={entry.id}>
                 <div>
-                  <h3>Title: <h4 className='entryInfo'>{entry.title}</h4></h3>
-                  <h3>Amount: <h4 className='entryInfo' style={{color: entry.value < 0 ? 'rgb(174, 0, 0)' : 'rgb(6, 90, 6)'}}>{entry.value} €</h4></h3>
-                  <h3>Date: <h4 className='entryInfo'>{entry.date}</h4></h3>
-                  <h3>Description: <h4 className='entryInfo'>{entry.description}</h4></h3>
+                  <h3>Title: </h3><h4 className='entryInfo'>{entry.title}</h4>
+                  <h3>Amount: </h3><h4 className='entryInfo' style={{color: entry.value < 0 ? 'rgb(174, 0, 0)' : 'rgb(6, 90, 6)'}}>{entry.value} €</h4>
+                  <h3>Date: </h3><h4 className='entryInfo'>{entry.date}</h4>
+                  <h3>Description: </h3><h4 className='entryInfo'>{entry.description}</h4>
                 </div>
               </Link>
             </div>
