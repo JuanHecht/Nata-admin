@@ -29,13 +29,16 @@ function HomePage() {
       });
   }
 
+  // Initial sort to display de entries by newest to oldest by date
+  const sortedExpenses = [...expenses].sort((a, b) => new Date(b.date) - new Date(a.date));
+
   return (
     <section className="main">
       <div className="entriesDisplay">
         <Link to={"/add-new-entry"}>
           <button>Add New Entry</button>
         </Link>
-        {expenses.map(entry => (
+        {sortedExpenses.map(entry => (
           <ExpenseCard key={entry.id} entry={entry}  removeItem={removeItem} />
         ))}
       </div>
