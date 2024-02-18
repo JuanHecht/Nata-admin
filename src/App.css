@@ -84,7 +84,30 @@ button {
 }
 button:hover{
   cursor:pointer;
- 
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center items horizontally */
+  height: 100vh; /* occupy full height of the viewport */
+  margin-top: 30px;
+}
+
+.details h2 {
+  text-align: center; /* center text horizontally */
+}
+
+.detailsBtns{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.pageError{
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 

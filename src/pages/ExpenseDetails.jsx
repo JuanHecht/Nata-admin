@@ -33,19 +33,21 @@ function ExpenseDetails(){
     /* Need to import the updated expenses json file (the temporary one created with params) */
   
     return (
-        <div>
-            <h2>Entry Data:</h2>
+        <div className="details">
+            <h2>Entry Data</h2>
             <h3>{entryData.title}</h3>
-            <p>Value: {`${entryData.value} €`}</p>
-            <p>Date: {entryData.date}</p> 
-            <p>Description: {entryData.description}</p>
+            <p><b>Value:</b> {`${entryData.value} €`}</p>
+            <p><b>Date:</b> {entryData.date}</p> 
+            <p><b>Description:</b> {entryData.description}</p>
             <div>
-                <p>Recurring: {entryData.subscription ? "Yes" : "No"}</p>
+                <p><b>Recurring:</b> {entryData.subscription ? "Yes" : "No"}</p>
             </div>
-            <Link to={`/edit-entry/${entryId}`}>
-                <button>Edit entry</button>
-            </Link>
-            <button onClick={() => removeItem(entryId)}>Delete Entry</button>
+            <div className="detailsBtns">
+                <Link to={`/edit-entry/${entryId}`}>
+                    <button>Edit entry</button>
+                </Link>
+                <button onClick={() => removeItem(entryId)}>Delete Entry</button>
+            </div>
         </div>
     )
 }
