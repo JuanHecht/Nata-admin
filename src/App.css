@@ -79,6 +79,12 @@ body{
 
 button {
   background-color: #BC6C25;
+  border-radius: 5px;
+  font-weight: bold;
+}
+button:hover{
+  cursor:pointer;
+ 
 }
 
 

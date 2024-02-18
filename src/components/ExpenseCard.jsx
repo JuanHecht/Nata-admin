@@ -20,9 +20,11 @@ function ExpenseCard(props) {
 
         return (
           <div className="card" key={entry.id}>
+
             <div  className="imgContainer">
               <img className="cardImg" src={assignImage(entry.category)} alt={entry.category} />
             </div>
+            
             <div className='cardInfo'>
               <Link to={`entry/${entry.id}`} key={entry.id}>
                 <div>

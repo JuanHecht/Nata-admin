@@ -3,8 +3,30 @@
     left: 0;
     /* set to height of the navbar */
     top: 60px;
-    background-color: rgb(244, 191, 94);
+    background-color: #DDA15E;
     height: 100vh;
     width: 100px;
-    border-right: 2px solid black
+    justify-content: space-between;
+}
+.sortingBtns{
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 80px;
+    justify-content: center;
+}
+.sortingBtns button{
+    margin-bottom: 20px;
+}
+
+.addBtn{
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 80px;
+    justify-content: center; 
 }
