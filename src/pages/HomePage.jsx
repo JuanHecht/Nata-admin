@@ -30,8 +30,15 @@ function HomePage() {
       });
   }
 
-  // Initial sort to display de entries by newest to oldest by date
-  const sortedExpenses = [...expenses].sort((a, b) => new Date(b.date) - new Date(a.date));
+  function sortByDateNewToOld(){
+    const sortedExpenses = [...expenses].sort((a, b) => new Date(b.date) - new Date(a.date));
+    setExpenses(sortedExpenses)
+  }
+
+  function sortByDateOldtoNew(){
+    const sortedExpenses = [...expenses].sort((a, b) => new Date(a.date) - new Date(b.date));
+    setExpenses(sortedExpenses)
+  }
 
   function sortByValueUp(){
     const sortedByValue = [...expenses].sort((a, b) => a.value - b.value);
@@ -42,15 +49,40 @@ function HomePage() {
     setExpenses(sortedByValue)
   }
 
+  function showExpenses(){
+    const sortedByTypeExp = [...expenses].filter((entry)=>{return(entry.entryType === true)})
+    setExpenses(sortedByTypeExp)
+  }
+
+  function showIncome(){
+    const sortedByTypeInc = [...expenses].filter((entry)=>{return(entry.entryType !== true)})
+    setExpenses(sortedByTypeInc)
+  }
+
+  function removeAllFilters() {
+    axios.get(API_URL)
+      .then(response => {
+        setExpenses(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching expenses:', error);
+      });
+  }
+
   return (
     <section className="main">
 
-      <Sidebar sortByValueUp={sortByValueUp} sortByValueDown={sortByValueDown} expenses={expenses}/>
+      <Sidebar
+        sortByDateNewToOld={sortByDateNewToOld}
+        sortByDateOldtoNew={sortByDateOldtoNew}
+        sortByValueUp={sortByValueUp} 
+        sortByValueDown={sortByValueDown}
+        showExpenses={showExpenses}
+        showIncome={showIncome}
+        removeAllFilters={removeAllFilters}
+        expenses={expenses}/>
 
       <div className="entriesDisplay">
-        <Link to={"/add-new-entry"}>
-          <button>Add New Entry</button>
-        </Link>
         {expenses.map(entry => (
           <ExpenseCard key={entry.id} entry={entry}  removeItem={removeItem} />
         ))}
