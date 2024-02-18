@@ -1,7 +1,9 @@
 .card{
-    margin: 30px;
+    margin: 20px;
     padding: 15px;
     display: flex;
+    justify-content: baseline;
+    align-items: center;
     border: 5px solid #BC6C25;
     background-color: #DDA15E;
     border-radius: 15px;
@@ -10,22 +12,26 @@
 .cardImg{
     height: 100px;
     width: 100px;
-    margin-top: 30%;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 30%;
     margin-left: 20px;
 }
-
+.cardLine{
+    display: flex;
+    align-items: baseline;
+    justify-content: baseline;
+}
 .cardInfo h3{
     margin-left: 40px;
-    border-bottom: none;
     color: #283618;
-    width: 200px;
+    margin-right: 5px;
 }
 a {
     font-weight: 500;
     text-decoration: inherit;
 }
-
-.line{
-    display: flex;
-    flex-direction: row;
+.cardInfo{
+    line-height: 0px;
 }

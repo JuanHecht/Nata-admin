@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import axios from 'axios';
+import '../app.css'
 /* import { PieChart } from '@mui/x-charts/PieChart'; */
 
 
@@ -52,8 +53,8 @@ function Balance() {
     return (
     <section>
 
-        <section>
-            <h1>Current Balance: </h1><h2 style={{color: allValues < 0 ? 'rgb(174, 0, 0)' : 'rgb(6, 90, 6)'}}>{allValues} €</h2>
+        <section className='balanceLine'>
+            <h1 className='balanceText'>Current Balance: </h1><h1 className='balanceValue' style={{color: allValues < 0 ? 'rgb(174, 0, 0)' : 'rgb(6, 90, 6)'}}>{allValues} €</h1>
         </section>
 
        {/*  <section style={{height: "400px", width:"400px"}}>
